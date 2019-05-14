@@ -1,5 +1,8 @@
-# Frankenstein TodoMVC
+# Frankenstein Migration Demo
 
-The collection of TodoMVC projects available from http://todomvc.com/ but suited
-and tuned to be suitable for Frankenstein approach demos. Make sure to check
-branches for a partcular framework's implementation.
+This demo repository is a demonstration of Frankenstein migration technique.
+Author: Denys Mishunov
+
+## More info:
+
+* Conference talk [I built &lt;frankenstein-monster&gt;: 3 stories of migration]()
