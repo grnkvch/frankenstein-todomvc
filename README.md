@@ -1,5 +1,29 @@
-# Frankenstein TodoMVC
+# todomvc
 
-The collection of TodoMVC projects available from http://todomvc.com/ but suited
-and tuned to be suitable for Frankenstein approach demos. Make sure to check
-branches for a partcular framework's implementation.
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
