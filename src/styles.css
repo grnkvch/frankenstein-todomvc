@@ -1,0 +1,11 @@
+html,body {
+  min-height: 100%;
+}
+.filters li a.selected {
+  background: #00d8ff;
+  color: White;
+  font-weight: bold;
+}
+input.new-todo::placeholder {
+  color: #00d8ff;
+}
