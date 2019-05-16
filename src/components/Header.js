@@ -1,6 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import TodoTextInput from './TodoTextInput'
+
+import todoStorage from "../storage"
+
 import styled from 'styled-components'
 
 const StyledTitle = styled.h1`
@@ -18,32 +20,65 @@ const StyledInputWrapper = styled.div`
     color: #00d8ff;
   }
 `
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.documentRoot = this.props.root? this.props.root: document;
+    this.state = {
+      todos: todoStorage.fetch()
+    };
+  }
 
+  componentDidMount() {
+    document.addEventListener("store-update", this.updateTodos);
+  }
 
-const Header = ({addTodo}) => {
+  componentWillUnmount() {
+    document.removeEventListener("store-update", this.updateTodos);
+  }
 
-  const handleSave = text => {
-    if (text.length !== 0) {
-      addTodo(text)
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todos !== this.state.todos) {
+      todoStorage.save(this.state.todos);
     }
   }
 
-  return (
-    <header>
-      <StyledTitle>React.todos</StyledTitle>
-      <StyledInputWrapper>
-        <TodoTextInput
-          newTodo
-          onSave={handleSave}
-          placeholder="What needs to be done?"
-        />
-      </StyledInputWrapper>
-    </header>
-  )
-}
+  updateTodos = e => {
+    this.setState({ todos: e.detail.todos });
+  }
 
-Header.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  addTodo = text => {
+    const todos = [
+      {
+        id: todoStorage.generateid(5),
+        completed: false,
+        text: text
+      },
+      ...this.state.todos
+    ];
+    this.setState({ todos });
+  }
+
+  handleSave = text => {
+    if (text.length !== 0) {
+      this.addTodo(text)
+    }
+  }
+
+  render() {
+    return (
+      <header>
+        <StyledTitle>React.todos</StyledTitle>
+        <StyledInputWrapper>
+          <TodoTextInput
+            newTodo
+            onSave={this.handleSave}
+            placeholder="What needs to be done?"
+              />
+        </StyledInputWrapper>
+      </header>
+    );
+  }
 }
 
 export default Header
