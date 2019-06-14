@@ -1,4 +1,0 @@
-/* Override bootstrap's styling*/
-*, ::after, ::before {
-  box-sizing: content-box;
-}
