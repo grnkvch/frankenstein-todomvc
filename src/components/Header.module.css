@@ -1,0 +1,13 @@
+.todoHeader {
+  text-indent: 100%;
+  overflow-x: hidden;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg');
+  height: 100px;
+  background-size: auto 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  top: -180px !important;
+}
+.todoInput input::placeholder {
+  color: #00d8ff;
+}

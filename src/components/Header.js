@@ -4,23 +4,8 @@ import TodoTextInput from './TodoTextInput'
 import todoStorage from "../storage"
 
 import 'todomvc-app-css/index.css'
-import styled from 'styled-components'
+import styles from './Header.module.css'
 
-const StyledTitle = styled.h1`
-  text-indent: 100%;
-  overflow-x: hidden;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg');
-  height: 100px;
-  background-size: auto 100px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  top: -180px !important;
-`
-const StyledInputWrapper = styled.div`
-  input::placeholder {
-    color: #00d8ff;
-  }
-`
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -69,14 +54,13 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <StyledTitle>React.todos</StyledTitle>
-        <StyledInputWrapper>
-          <TodoTextInput
-            newTodo
-            onSave={this.handleSave}
-            placeholder="What needs to be done?"
-              />
-        </StyledInputWrapper>
+        <h1 className={styles.todoHeader}>React.todos</h1>
+        <TodoTextInput
+          className={styles.todoInput}
+          newTodo
+          onSave={this.handleSave}
+          placeholder="What needs to be done?"
+            />
       </header>
     );
   }
