@@ -6,7 +6,8 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    contentBase: "dist",
+    contentBase: "./",
+    disableHostCheck: true,
     overlay: true,
     stats: {
       colors: true
